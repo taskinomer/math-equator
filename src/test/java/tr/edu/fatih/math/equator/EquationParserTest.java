@@ -31,6 +31,15 @@ public class EquationParserTest {
         assertEquals(parsedString, "120");
     }
 
+    @Test
+    public void testEquator_withAnotherComplexEquation() throws ZeroStringException {
+        String equation = "4-1+(8*1/(4-2))";
+        EquationParser equationParser = new EquationParser(equation);
+
+        String parse = equationParser.parse();
+        assertEquals(parse, "7");
+    }
+
     @Test(expected = ZeroStringException.class)
     public void testEquator_withComplexEquation_shouldThrowZeroValueException() throws ZeroStringException {
         EquationParser equationParser = new EquationParser("(3+2*(1/(4-4)))");
